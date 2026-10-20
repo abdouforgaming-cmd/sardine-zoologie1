@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تشريح سمكة الساردين</title>
+<style>
+:root{--bg:#f4f8fb;--card:#fff;--tx:#12303f;--mut:#5b7280;--ac:#e8590c;--body:#cfdde6;--line:#8aa3b2;--org:#f3a6a0;--bd:#d5e0e7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a22;--card:#16262f;--tx:#e6f0f5;--mut:#92aab8;--ac:#ff9248;--body:#2c4452;--line:#5f7e90;--org:#b5645e;--bd:#25404e}}
+:root[data-theme="dark"]{--bg:#0e1a22;--card:#16262f;--tx:#e6f0f5;--mut:#92aab8;--ac:#ff9248;--body:#2c4452;--line:#5f7e90;--org:#b5645e;--bd:#25404e}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.6;padding:16px}
+.wrap{max-width:980px;margin:auto}
+h1{font-size:1.5rem;margin:4px 0}
+p.sub{color:var(--mut);margin:0 0 14px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px}
+.fig{overflow-x:auto}
+svg{width:100%;min-width:560px;height:auto;display:block;direction:ltr}
+.body{fill:var(--body);stroke:var(--line);stroke-width:2}
+.p{fill:var(--org);stroke:var(--line);stroke-width:1.5;cursor:pointer;transition:.15s}
+.p.ex{fill:var(--body)}
+.p.ln{fill:none;stroke:var(--org);stroke-linecap:round}
+.p.hl{fill:var(--ac);stroke:var(--ac)}
+.p.ln.hl{fill:none;stroke:var(--ac)}
+.lead{stroke:var(--line);stroke-width:1;fill:none}
+.lbl{font-size:13px;fill:var(--tx);font-weight:600;cursor:pointer}
+.lbl.hl{fill:var(--ac)}
+#info{margin:12px 0;padding:12px;border-radius:12px;background:var(--card);border:1px solid var(--bd);min-height:64px}
+#info b{color:var(--ac);direction:ltr;unicode-bidi:isolate}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.chip{padding:8px 10px;border:1px solid var(--bd);background:var(--card);border-radius:10px;cursor:pointer;font-size:.9rem}
+.chip b{display:block;direction:ltr;text-align:left}
+.chip span{color:var(--mut);font-size:.8rem}
+.chip.hl{border-color:var(--ac);outline:2px solid var(--ac)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🐟 تشريح سمكة الساردين</h1>
+<p class="sub">اضغط على أي عضو أو اسم لعرض وظيفته. أسماء الأعضاء بالإنجليزية.</p>
+<div class="tabs">
+<button id="tE" class="on">الشكل الخارجي · External</button>
+<button id="tI">الشكل الداخلي · Internal</button>
+</div>
+<div class="card fig"><svg id="s" viewBox="0 0 800 310" xmlns="http://www.w3.org/2000/svg"></svg></div>
+<div id="info">اختر عضواً من الرسم أو من القائمة.</div>
+<div class="grid" id="list"></div>
+</div>
+<script>
+var B="M70 150C90 112 170 85 300 85C450 85 560 115 640 140L640 160C560 190 450 215 300 215C170 215 90 188 70 150Z";
+var C="M636 140L708 98Q690 150 708 202L636 160Z";
+var scales="",scutes="M232 213";
+for(var r=0;r<3;r++)for(var c=0;c<9;c++){var x=330+c*28+(r%2)*14,y=108+r*20;scales+="M"+x+" "+y+"q10 12 0 24 ";}
+for(var i=0;i<12;i++){scutes+="l13 8 l13 -8 ";}
+var EX=[
+["head","Head","الرأس: يضم الدماغ والفم والعينين والخياشيم","path","M70 150C90 112 130 88 178 90L176 210C130 210 90 188 70 150Z",125,105,125,62,"ex"],
+["eye","Eye","العين: كبيرة وتغطيها جفون دهنية شفافة","circle","cx=108 cy=136 r=11",108,136,40,100,"ex"],
+["mouth","Mouth (Jaws)","الفم والفكان: فم طرفي يتغذى على العوالق","path","M72 150L108 162",90,156,40,265,"ln ex"],
+["operc","Operculum (Gill cover)","الغطاء الخيشومي: يحمي الخياشيم ويساعد على التنفس","path","M178 92C150 120 150 180 176 208C190 180 190 120 178 92Z",170,120,205,28,"ex"],
+["dorsal","Dorsal fin","الزعنفة الظهرية: تحفظ التوازن أثناء السباحة","path","M300 87L328 52L372 56L378 92Z",345,70,345,25,""],
+["scales","Scales","الحراشف: صفائح رقيقة فضية تحمي الجلد","path","",430,130,480,30,"ln"],
+["caudal","Caudal fin (Tail)","الزعنفة الذيلية: مصدر الدفع الرئيسي","path","",698,130,735,60,""],
+["peduncle","Caudal peduncle","ساق الذيل: الجزء الدقيق قبل الذيل","path","M580 132L640 140L640 160L580 168Z",610,150,650,235,"ex"],
+["pect","Pectoral fin","الزعنفة الصدرية: للتوجيه والتوقف","path","M178 178L160 218L212 192Z",175,200,120,272,""],
+["pelv","Pelvic fin","الزعنفة الحوضية: تساعد على الثبات والاتزان","path","M335 213L322 244L372 216Z",345,230,350,285,""],
+["anal","Anal fin","الزعنفة الشرجية: تثبّت السمكة أثناء السباحة","path","M515 192L535 228L592 176Z",545,205,525,268,""],
+["scutes","Belly scutes","الحراشف البطنية (الصفائح): حافة مسننة على البطن","path","",290,217,235,262,"ln"]
+];
+var IN=[
+["brain","Brain","الدماغ: مركز التحكم العصبي","ellipse","cx=128 cy=122 rx=14 ry=9",128,122,90,28,""],
+["gills","Gills","الخياشيم: تمتص الأكسجين من الماء","ellipse","cx=158 cy=150 rx=16 ry=38",158,128,170,55,""],
+["swim","Swim bladder","المثانة الهوائية: تتحكم في الطفو","ellipse","cx=335 cy=120 rx=60 ry=14",335,108,335,28,""],
+["spine","Spine (Vertebral column)","العمود الفقري: يدعم الجسم ويحمي الحبل الشوكي","path","M175 150L640 150",470,150,470,48,"ln"],
+["muscle","Muscle (Myomeres)","العضلات: قطع عضلية تحرّك الذيل","path","M420 100l15 20l15 -20l15 20l15 -20l15 20l15 -20l15 20l15 -20",570,100,640,35,"ln"],
+["heart","Heart","القلب: يضخ الدم، ذو حجرتين","ellipse","cx=190 cy=188 rx=11 ry=9",190,188,125,272,""],
+["liver","Liver","الكبد: ينتج الصفراء ويخزن الدهون","ellipse","cx=225 cy=178 rx=24 ry=14",225,190,210,252,""],
+["stomach","Stomach","المعدة: تهضم الغذاء","path","M250 160C270 150 295 165 285 185C270 195 250 185 250 160Z",268,178,295,285,""],
+["spleen","Spleen","الطحال: ينتج خلايا الدم ويخزنها","ellipse","cx=298 cy=194 rx=6 ry=5",298,198,360,255,""],
+["caeca","Pyloric caeca","الزوائد البوابية: أكياس تزيد الهضم والامتصاص","path","M298 178l18 -6M300 186l22 -2M302 194l20 4",316,184,420,285,"ln"],
+["gonad","Gonad (Roe / Milt)","الغدة التناسلية: بيض عند الأنثى وحليب عند الذكر","ellipse","cx=400 cy=182 rx=55 ry=13",400,182,480,255,""],
+["intestine","Intestine","الأمعاء: امتصاص الغذاء وطرح الفضلات","path","M285 188C330 208 380 202 420 200L500 209",450,203,545,285,"ln"],
+["kidney","Kidney","الكلية: تنظم الماء والأملاح","path","M300 160L560 162",560,162,610,255,"ln"],
+["anus","Anus","الشرج: فتحة خروج الفضلات","circle","cx=500 cy=209 r=5",500,209,665,285,""]
+];
+var mode="E",S=document.getElementById("s"),L=document.getElementById("list"),I=document.getElementById("info");
+function shape(d){
+ var t=d[3],a=d[4],cls="p "+d[9];
+ if(d[0]=="scales")return '<path class="'+cls+'" data-id="scales" d="'+scales+'" style="stroke-width:1.5;stroke:var(--line)"/>';
+ if(d[0]=="scutes")return '<path class="'+cls+'" data-id="scutes" d="'+scutes+'" style="stroke-width:3"/>';
+ if(d[0]=="caudal")return '<path class="p ex" data-id="caudal" d="'+C+'"/>';
+ if(t=="path")return '<path class="'+cls+'" data-id="'+d[0]+'" d="'+a+'" '+(d[9].indexOf("ln")>-1?'style="stroke-width:'+(d[0]=="spine"?9:d[0]=="mouth"?4:5)+';stroke-dasharray:'+(d[0]=="spine"?"7 3":"none")+'"':'')+'/>';
+ var at=a.split(" ").map(function(p){var k=p.split("=");return k[0]+'="'+k[1]+'"'}).join(" ");
+ return '<'+t+' class="'+cls+'" data-id="'+d[0]+'" '+at+'/>';
+}
+function draw(){
+ var D=mode=="E"?EX:IN,h='<path class="body" d="'+C+'"/><path class="body" d="'+B+'"/>';
+ if(mode=="I")h+='<path d="M175 90L176 210" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>';
+ D.forEach(function(d){h+=shape(d)});
+ D.forEach(function(d){
+  var top=d[8]<150,y1=top?d[8]+6:d[8]-15;
+  h+='<path class="lead" d="M'+d[7]+' '+y1+'L'+d[5]+' '+d[6]+'"/><circle cx="'+d[5]+'" cy="'+d[6]+'" r="2.5" fill="var(--ac)"/>';
+  h+='<text class="lbl" data-id="'+d[0]+'" x="'+d[7]+'" y="'+d[8]+'" text-anchor="middle">'+d[1]+'</text>';
+ });
+ S.innerHTML=h;
+ L.innerHTML=D.map(function(d){return '<div class="chip" data-id="'+d[0]+'"><b>'+d[1]+'</b><span>'+d[2].split(":")[0]+'</span></div>'}).join("");
+ I.textContent="اختر عضواً من الرسم أو من القائمة.";
+ [S,L].forEach(function(root){
+  root.querySelectorAll("[data-id]").forEach(function(el){
+   el.addEventListener("mouseenter",function(){hl(el.dataset.id,1)});
+   el.addEventListener("mouseleave",function(){hl(el.dataset.id,0)});
+   el.addEventListener("click",function(){sel(el.dataset.id)});
+  });
+ });
+}
+function hl(id,on){document.querySelectorAll('[data-id="'+id+'"]').forEach(function(e){e.classList.toggle("hl",!!on)})}
+function sel(id){
+ var D=(mode=="E"?EX:IN).filter(function(d){return d[0]==id})[0];
+ var p=D[2].split(":");
+ I.innerHTML="<b>"+D[1]+"</b> — "+p[0]+":"+(p[1]||"");
+}
+function setMode(m){mode=m;document.getElementById("tE").classList.toggle("on",m=="E");document.getElementById("tI").classList.toggle("on",m=="I");draw()}
+document.getElementById("tE").onclick=function(){setMode("E")};
+document.getElementById("tI").onclick=function(){setMode("I")};
+draw();
+</script>
+</body>
+</html>
